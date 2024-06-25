@@ -1,6 +1,9 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 // Import the functions you need from the SDKs you need
@@ -78,7 +81,20 @@ const TodoItemList = (props) => {
     <ul>{todoList}</ul>
   </div>);
   };
-  
+
+const TodoListAppBar = (props) => {
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Todo List App
+        </Typography>
+        <Button color="inherit">Log In</Button>
+      </Toolbar>
+    </AppBar>
+  );
+};
+      
 function App() {
   const [todoItemList, setTodoItemList] = useState([]);
 
@@ -125,6 +141,7 @@ function App() {
     
   return (
     <div className="App">
+      <TodoListAppBar />
       <TodoItemInputField onSubmit={onSubmit} />
       <TodoItemList
         todoItemList={todoItemList}
